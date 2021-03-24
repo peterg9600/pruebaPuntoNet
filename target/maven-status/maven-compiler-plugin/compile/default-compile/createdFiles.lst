@@ -1,0 +1,4 @@
+com\puntonet\service\util\utilJPA.class
+com\puntonet\service\entity\ticket_puntonet.class
+com\puntonet\service\util\guardarTicket.class
+com\puntonet\service\Services\puntoNetService.class

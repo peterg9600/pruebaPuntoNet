@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<title>Tickets Punto Net</title>
+</h:head>
+<h:body>
+	<h2>
+		<h:outputText value="Listas de Tickets"></h:outputText>
+	</h2>
+	<h:form >
+	 <div class="ui-fluid p-formgrid p-grid" style="text-align: center;">
+		<div class="p-field p-col-12 p-md-4">
+			<h:outputLabel for="@next" value="TICKET ALL" />
+			<h:selectOneMenu id="option">
+<!-- 			#{PuntoNetService.OpenTicket()} -->
+				<f:selectItem itemLabel="Ticket All" itemValue="" />
+				<f:selectItem itemLabel="Open Tickets" itemValue="" />
+				<f:selectItem itemLabel="Closed Tickets" itemValue="" />
+				<f:selectItem itemLabel="Overdue Tickets" itemValue="" />
+			    <f:selectItem itemLabel="Escalated Tickets" itemValue="" />
+				<f:selectItem itemLabel="High Priority Tickets" itemValue="" />
+				
+				<f:facet name="footer">
+					<h:outputText value="3 options" style="font-weight:bold;" />
+				</f:facet>
+			</h:selectOneMenu>
+		</div>
+	</div> 
+		<h:commandButton action="#{PuntoNetService.nuevo()}" value="nuevos"></h:commandButton>
+		<h:dataTable value="#{PuntoNetService.cargadatos()}" var="ticker" border="1">
+			<h:column>
+				<f:facet name="header"> ID </f:facet>
+				<h:outputText value="#{ticker.id}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header"> DETAILS TICKETS </f:facet>
+				<h:outputText value="#{ticker.detalle_ticket}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">STATUS</f:facet>
+				<h:outputText value="#{ticker.estado}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">PRIORITY</f:facet>
+				<h:outputText value="#{ticker.prioridad}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">CASE OWNER</f:facet>
+				<h:outputText value="#{ticker.case_owner}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">DUE DATE</f:facet>
+				<h:outputText value="#{ticker.fecha_vencimiento}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">DEALS</f:facet>
+				<h:outputText value="#{ticker.ofertas}"></h:outputText>
+			</h:column>
+		</h:dataTable>
+	</h:form>
+</h:body>
+</html>
